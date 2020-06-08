@@ -1,0 +1,27 @@
+<% content_for :page do %>
+  <h1 class="title is-1"><%= @work.title %></h1>
+  <p><%= verbose_date(@work.date) %></p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Exercise</th>
+        <th># of Sets</th>
+        <th>Weight</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @work.exercises.each do |exercise| %>
+      <tr>
+        <td><%= exercise.name %></td>
+        <td><%= exercise.sets %></td>
+        <td><%= exercise.weight %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Edit Work', edit_work_path(@work), class: "button mt4"  if work_author(@work) %>
+<% end %>
+
+<%= render 'page_template' %>
